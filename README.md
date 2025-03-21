@@ -6,6 +6,29 @@ An intelligent web content extraction application that uses natural language pro
 
 AI DataHarvester combines the power of local LLMs (Large Language Models) with web scraping technologies to create an intelligent data extraction tool. Unlike traditional web scrapers that simply download content, this application understands what you're looking for and extracts specifically requested information using natural language queries.
 
+## 📸 Screenshots
+
+### 📊 Main Dashboard
+<!-- 
+Insert a screenshot of the main application interface here.
+Example: ![Main Dashboard](screenshots/main_dashboard.png)
+-->
+[Screenshot 1: The main application interface showing the URL input, model selection and parsing interface]
+
+### 🔍 Parsing Results
+<!-- 
+Insert a screenshot of parsing results here.
+Example: ![Parsing Results](screenshots/parsing_results.png)
+-->
+[Screenshot 2: Example of parsing results from a website, showing extracted data and download/webhook options]
+
+### 🛡️ Health Monitoring
+<!-- 
+Insert a screenshot of the health monitoring panel here.
+Example: ![Health Monitoring](screenshots/health_monitoring.png)
+-->
+[Screenshot 3: The health monitoring sidebar showing system status and troubleshooting options]
+
 ## ✨ Features
 
 ### 🔍 Intelligent Web Extraction
@@ -37,6 +60,35 @@ AI DataHarvester combines the power of local LLMs (Large Language Models) with w
 - Docker-based deployment for consistent environment
 - Multi-container setup with orchestration
 - Volume persistence for logs and data
+
+## 📂 Project Structure
+
+```
+ai-dataharvester/
+├── .github/                  # GitHub workflows and CI/CD configuration
+│   └── workflows/            # CI/CD workflow definitions
+│       └── deploy.yml        # Deployment workflow
+│
+├── logs/                     # Application logs directory
+│   ├── scraper.log           # Web scraping logs
+│   ├── parser.log            # LLM parsing logs
+│   ├── streamlit.log         # UI application logs
+│   └── health.log            # Health monitoring logs
+│
+├── .env                      # Environment variables (credentials)
+├── .gitignore                # Git ignore rules
+├── docker-compose.yml        # Docker Compose configuration
+├── Dockerfile                # Docker image definition
+├── README.md                 # Project documentation
+├── requirements.txt          # Python dependencies
+├── setup.sh                  # Setup script for directory structure
+│
+├── main.py                   # Main Streamlit application
+├── scrape.py                 # Web scraping functionality
+├── parse.py                  # LLM parsing functionality
+├── health.py                 # Health monitoring system
+└── logger_config.py          # Centralized logging configuration
+```
 
 ## 🚀 Getting Started
 
@@ -109,6 +161,14 @@ The application consists of two main Docker containers:
    - Supports multiple models
    - Performs natural language understanding
    - Extracts specific information based on queries
+
+### 🔄 Data Flow
+
+```
+User Request → Streamlit UI → Web Scraping (Selenium/Bright Data) → Content Cleaning
+                                                                       ↓
+     JSON Export/Webhook ← Result Display ← LLM Parsing (Ollama) ← Content Processing
+```
 
 ## 📝 Logging and Monitoring
 
