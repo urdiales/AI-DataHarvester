@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  ai-dataharvester:
+    build: .
+    container_name: ai-dataharvester
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - PYTHONUNBUFFERED=1  # Ensures Python output is sent straight to the container logs
+    volumes:
+      - ./logs:/app/logs  # Mount logs directory for persistence
+    networks:
+      - ai_harvester_net
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - ai_harvester_net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 8G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s  # Ollama may take longer to start
+
+volumes:
+  ollama_data:
+
+networks:
+  ai_harvester_net:
+    driver: bridge

@@ -1,0 +1,55 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
+      - name: Create directories
+        run: |
+          mkdir -p logs
+          chmod 755 logs
+      
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          
+      - name: Build Docker image
+        run: docker-compose build
+        
+      - name: Verify Docker image
+        run: |
+          docker images
+          docker-compose config
+          
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+        # This step would be customized based on your deployment environment
+        # For example, using SSH to connect to your server and pull/restart containers
+        run: |
+          echo "Deployment would happen here"
+          # Example:
+          # ssh user@your-server "cd /path/to/app && git pull && docker-compose up -d"
