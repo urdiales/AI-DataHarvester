@@ -1,6 +1,6 @@
 <div align="center">
   <img src="screenshots/ai_concept.png" alt="AI Concept" width="500"/>
-  <h1 style="font-size: 48px;">AI DataHarvester</h1>
+  <h1 style="font-size: 52px;">AI DataHarvester</h1>
 </div>
 
 An intelligent web content extraction application that uses natural language processing to transform web scraping into precise data harvesting.
@@ -270,7 +270,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📜 License
 
-[Your License Here]
+Copyright (c) 2025 [David Urdiales]
+
+This project is licensed under the MIT License
 
 ## 🙏 Acknowledgments
 
