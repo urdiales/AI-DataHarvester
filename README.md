@@ -11,14 +11,19 @@ AI DataHarvester combines the power of local LLMs (Large Language Models) with w
 
 ## 📸 Screenshots
 
-### 📊 AI DataHarvester - Concept Illustration
+### 📊 AI DataHarvester - Model Select 
 <p align="center">
-  <img src="screenshots/ai_dataharvester_concept.png" alt="AI DataHarvester Concept" width="600"/>
+  <img src="screenshots/ParseQuestion.png" alt="AI DataHarvester Model Select" width="600"/>
 </p>
 
-### 🔍 Application Header
+### 🔍 Application Scraped Content
 <p align="center">
-  <img src="screenshots/app_header.png" alt="Application Header" width="600"/>
+  <img src="screenshots/main_dashboard.png" alt="Scraped Content" width="600"/>
+</p>
+
+📝 Parsed Content Results
+<p align="center">
+  <img src="screenshots/ParsedContent.png" alt="Parsed Content Results" width="600"/>
 </p>
 
 ### 🛡️ Health Monitoring
