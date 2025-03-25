@@ -1,6 +1,6 @@
 <div align="center">
   <img src="screenshots/ai_concept.png" alt="AI Concept" width="500"/>
-  <h4>AI DataHarvester</h4>
+  <h1 style="font-size: 48px;">AI DataHarvester</h1>
 </div>
 
 An intelligent web content extraction application that uses natural language processing to transform web scraping into precise data harvesting.
