@@ -1,4 +1,4 @@
-# <img src="screenshots/ai_concept.png" alt="AI Concept" width="30"/> AI DataHarvester
+# <img src="screenshots/ai_concept.png" alt="AI Concept" width="150"/> AI DataHarvester
 
 An intelligent web content extraction application that uses natural language processing to transform web scraping into precise data harvesting.
 
