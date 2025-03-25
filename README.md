@@ -94,36 +94,82 @@ ai-dataharvester/
 
 ### 📋 Prerequisites
 
-- Docker and Docker Compose
-- Bright Data account credentials (for web scraping proxy)
-- Internet connection
+- Ubuntu Desktop system
+- Python 3.11
+- Git
+- Ollama already running locally
 
-### 🔧 Installation
+### 🔧 Local Installation
 
-1. Clone this repository:
+1. **Install Python 3.11** (if not already installed):
    ```bash
+   sudo apt install python3.11
+   sudo apt install python3.11-venv
+   ```
+
+2. **Clone the repository**:
+   ```bash
+   # Navigate to your preferred installation directory
+   cd /path/to/your/preferred/directory
    git clone https://github.com/yourusername/ai-dataharvester.git
    cd ai-dataharvester
    ```
 
-2. Run the setup script to create necessary directories:
+3. **Create and activate a Python virtual environment**:
    ```bash
-   chmod +x setup.sh
-   ./setup.sh
+   python3.11 -m venv ai
+   source ai/bin/activate
    ```
 
-3. Edit the `.env` file with your Bright Data credentials:
+4. **Install the required dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Create needed directories** (if they don't exist):
+   ```bash
+   mkdir -p logs
+   ```
+
+6. **Create an .env file** for your credentials:
+   ```bash
+   touch .env
+   nano .env
+   ```
+   Add these lines to the file (replace with your actual credentials):
    ```
    BRIGHTDATA_USER=your_brightdata_user
    BRIGHTDATA_PASSWORD=your_brightdata_password
    ```
+   Save and exit (Ctrl+X, then Y, then Enter)
 
-4. Build and start the containers:
+### 🐳 Docker Installation
+
+1. **Build and start the containers**:
    ```bash
    docker-compose up -d
    ```
 
-5. Access the application at http://localhost:8501
+2. **Access the application** at http://localhost:8501
+
+## 🎮 Running the Application
+
+1. **Ensure your Ollama instance is running**
+
+2. **Activate the virtual environment** (if not already activated):
+   ```bash
+   source ai/bin/activate
+   ```
+
+3. **Start the Streamlit application**:
+   ```bash
+   streamlit run main.py
+   ```
+
+4. **Access the application** by opening a web browser and navigating to:
+   ```
+   http://localhost:8501
+   ```
 
 ## 🎮 Usage
 
@@ -148,7 +194,7 @@ ai-dataharvester/
 
 ## 🏗️ Architecture
 
-The application consists of two main Docker containers:
+The application consists of two main components:
 
 1. **ai-dataharvester**: Streamlit application for UI and web scraping
    - Handles user interactions
@@ -192,8 +238,8 @@ If you encounter issues:
 1. Check the application logs in the `logs/` directory
 2. Verify the health status in the application sidebar
 3. Ensure your Bright Data credentials are correct in the `.env` file
-4. Make sure the Ollama service is running with `docker-compose ps`
-5. Try restarting containers with `docker-compose restart`
+4. Make sure the Ollama service is running
+5. Try restarting the application
 
 Common solutions:
 - Reset the application data if encountering UI issues
@@ -202,7 +248,6 @@ Common solutions:
 
 ## 🔒 Security Notes
 
-- Application runs with non-root user in Docker for improved security
 - Credentials are stored in environment variables, not hardcoded
 - Webhook connections use HTTPS for secure data transmission
 - Logs are segregated by component for better auditing
