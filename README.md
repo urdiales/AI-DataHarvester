@@ -114,7 +114,7 @@ ai-dataharvester/
    ```bash
    # Navigate to your preferred installation directory
    cd /path/to/your/preferred/directory
-   git clone https://github.com/yourusername/ai-dataharvester.git
+   git clone https://github.com/urdiales/ai-dataharvester.git
    cd ai-dataharvester
    ```
 
