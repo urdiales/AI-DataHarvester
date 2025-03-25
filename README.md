@@ -1,4 +1,4 @@
-# 🌟 AI DataHarvester
+# <img src="screenshots/ai_concept.png" alt="AI Concept" width="30"/> AI DataHarvester
 
 An intelligent web content extraction application that uses natural language processing to transform web scraping into precise data harvesting.
 
@@ -8,26 +8,21 @@ AI DataHarvester combines the power of local LLMs (Large Language Models) with w
 
 ## 📸 Screenshots
 
-### 📊 Main Dashboard
-<!-- 
-Insert a screenshot of the main application interface here.
-Example: ![Main Dashboard](screenshots/main_dashboard.png)
--->
-[Screenshot 1: The main application interface showing the URL input, model selection and parsing interface]
+### 📊 AI DataHarvester - Concept Illustration
+<p align="center">
+  <img src="screenshots/ai_dataharvester_concept.png" alt="AI DataHarvester Concept" width="600"/>
+</p>
 
-### 🔍 Parsing Results
-<!-- 
-Insert a screenshot of parsing results here.
-Example: ![Parsing Results](screenshots/parsing_results.png)
--->
-[Screenshot 2: Example of parsing results from a website, showing extracted data and download/webhook options]
+### 🔍 Application Header
+<p align="center">
+  <img src="screenshots/app_header.png" alt="Application Header" width="600"/>
+</p>
 
 ### 🛡️ Health Monitoring
-<!-- 
-Insert a screenshot of the health monitoring panel here.
-Example: ![Health Monitoring](screenshots/health_monitoring.png)
--->
-[Screenshot 3: The health monitoring sidebar showing system status and troubleshooting options]
+<p align="center">
+  <img src="screenshots/health_monitoring.png" alt="Health Monitoring Panel" width="300"/>
+</p>
+
 
 ## ✨ Features
 
@@ -240,6 +235,20 @@ If you encounter issues:
 3. Ensure your Bright Data credentials are correct in the `.env` file
 4. Make sure the Ollama service is running
 5. Try restarting the application
+
+### Configuring Ollama Connection
+
+By default, the application connects to Ollama at `http://localhost:11434`. If your Ollama instance is running at a different address:
+
+1. Add the `OLLAMA_HOST` variable to your `.env` file:
+   ```
+   OLLAMA_HOST=http://your-ollama-host:11434
+   ```
+
+2. For troubleshooting Ollama connection issues:
+   - Check that Ollama is running using `ollama list` in terminal
+   - Verify your Ollama API is accessible at the configured address
+   - Make sure you have the required models installed (`llama3.2`, etc.)
 
 Common solutions:
 - Reset the application data if encountering UI issues
